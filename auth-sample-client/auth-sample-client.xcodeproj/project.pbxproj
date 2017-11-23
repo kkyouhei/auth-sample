@@ -18,6 +18,7 @@
 		229B6FC31FC7205900434E7B /* JWT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229B6FBF1FC7205800434E7B /* JWT.framework */; };
 		229B6FC41FC7205900434E7B /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229B6FC01FC7205800434E7B /* RealmSwift.framework */; };
 		229B6FC51FC7205900434E7B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229B6FC11FC7205900434E7B /* Alamofire.framework */; };
+		229B6FCA1FC7238900434E7B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B6FC91FC7238900434E7B /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		229B6FBF1FC7205800434E7B /* JWT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWT.framework; path = Carthage/Build/iOS/JWT.framework; sourceTree = "<group>"; };
 		229B6FC01FC7205800434E7B /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		229B6FC11FC7205900434E7B /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		229B6FC91FC7238900434E7B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		229B6F991FC5FFC900434E7B /* auth-sample-client */ = {
 			isa = PBXGroup;
 			children = (
+				229B6FC81FC7233100434E7B /* Model */,
 				229B6F9A1FC5FFCA00434E7B /* AppDelegate.swift */,
 				229B6F9C1FC5FFCA00434E7B /* ViewController.swift */,
 				229B6F9E1FC5FFCA00434E7B /* Main.storyboard */,
@@ -121,6 +124,14 @@
 				229B6FC01FC7205800434E7B /* RealmSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		229B6FC81FC7233100434E7B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				229B6FC91FC7238900434E7B /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				229B6FCA1FC7238900434E7B /* User.swift in Sources */,
 				229B6F9D1FC5FFCA00434E7B /* ViewController.swift in Sources */,
 				229B6FA31FC5FFCB00434E7B /* auth_sample_client.xcdatamodeld in Sources */,
 				229B6F9B1FC5FFCA00434E7B /* AppDelegate.swift in Sources */,
