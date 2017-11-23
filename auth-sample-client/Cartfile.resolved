@@ -1,0 +1,3 @@
+github "Alamofire/Alamofire" "4.5.1"
+github "kylef/JSONWebToken.swift" "2.2.0"
+github "realm/realm-cocoa" "v3.0.2"

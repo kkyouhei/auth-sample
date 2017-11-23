@@ -14,6 +14,10 @@
 		229B6FA51FC5FFCB00434E7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 229B6FA41FC5FFCB00434E7B /* Assets.xcassets */; };
 		229B6FA81FC5FFCB00434E7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 229B6FA61FC5FFCB00434E7B /* LaunchScreen.storyboard */; };
 		229B6FB31FC5FFDB00434E7B /* auth_sample_clientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B6FB21FC5FFDA00434E7B /* auth_sample_clientTests.swift */; };
+		229B6FC21FC7205900434E7B /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229B6FBE1FC7205700434E7B /* Realm.framework */; };
+		229B6FC31FC7205900434E7B /* JWT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229B6FBF1FC7205800434E7B /* JWT.framework */; };
+		229B6FC41FC7205900434E7B /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229B6FC01FC7205800434E7B /* RealmSwift.framework */; };
+		229B6FC51FC7205900434E7B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229B6FC11FC7205900434E7B /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +42,10 @@
 		229B6FAE1FC5FFDA00434E7B /* auth-sample-clientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "auth-sample-clientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		229B6FB21FC5FFDA00434E7B /* auth_sample_clientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = auth_sample_clientTests.swift; sourceTree = "<group>"; };
 		229B6FB41FC5FFDB00434E7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		229B6FBE1FC7205700434E7B /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		229B6FBF1FC7205800434E7B /* JWT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWT.framework; path = Carthage/Build/iOS/JWT.framework; sourceTree = "<group>"; };
+		229B6FC01FC7205800434E7B /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		229B6FC11FC7205900434E7B /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +53,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				229B6FC21FC7205900434E7B /* Realm.framework in Frameworks */,
+				229B6FC31FC7205900434E7B /* JWT.framework in Frameworks */,
+				229B6FC41FC7205900434E7B /* RealmSwift.framework in Frameworks */,
+				229B6FC51FC7205900434E7B /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +76,7 @@
 				229B6F991FC5FFC900434E7B /* auth-sample-client */,
 				229B6FB11FC5FFDA00434E7B /* auth-sample-clientTests */,
 				229B6F981FC5FFC900434E7B /* Products */,
+				229B6FBD1FC7205400434E7B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +112,17 @@
 			path = "auth-sample-clientTests";
 			sourceTree = "<group>";
 		};
+		229B6FBD1FC7205400434E7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				229B6FC11FC7205900434E7B /* Alamofire.framework */,
+				229B6FBF1FC7205800434E7B /* JWT.framework */,
+				229B6FBE1FC7205700434E7B /* Realm.framework */,
+				229B6FC01FC7205800434E7B /* RealmSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -109,6 +133,7 @@
 				229B6F931FC5FFC900434E7B /* Sources */,
 				229B6F941FC5FFC900434E7B /* Frameworks */,
 				229B6F951FC5FFC900434E7B /* Resources */,
+				229B6FC61FC7208300434E7B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -196,6 +221,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		229B6FC61FC7208300434E7B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/JWT.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		229B6F931FC5FFC900434E7B /* Sources */ = {
@@ -358,6 +403,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "auth-sample-client/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.kkyouhei.auth-sample-client";
@@ -372,6 +421,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "auth-sample-client/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.kkyouhei.auth-sample-client";
