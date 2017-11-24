@@ -8,15 +8,21 @@
 
 import UIKit
 import CoreData
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let realm = try! Realm()
+        if let _ = realm.objects(User.self).first {
+            let sb: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+            self.window?.rootViewController = sb.instantiateInitialViewController()
+            self.window?.makeKeyAndVisible()
+        }
         return true
     }
 
