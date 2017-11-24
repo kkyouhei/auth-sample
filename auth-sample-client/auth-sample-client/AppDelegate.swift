@@ -18,11 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let realm = try! Realm()
-        if let _ = realm.objects(User.self).first {
-            let sb: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
-            self.window?.rootViewController = sb.instantiateInitialViewController()
-            self.window?.makeKeyAndVisible()
-        }
+        let sbName: String = realm.objects(User.self).first == nil ? "Login" : "Profile"
+        let sb: UIStoryboard =  UIStoryboard(name: sbName, bundle: nil)
+        self.window?.rootViewController = sb.instantiateInitialViewController()
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
