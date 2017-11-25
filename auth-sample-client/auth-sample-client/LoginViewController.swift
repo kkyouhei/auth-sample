@@ -23,6 +23,12 @@ class LoginViewController: UIViewController {
         indicator.activityIndicatorViewStyle = .gray
         return indicator
     }()
+    lazy var alertViewController: UIAlertController = {
+        let alert: UIAlertController = UIAlertController(title: "エラー", message: "ログインに失敗しました", preferredStyle: .alert)
+        let cancelAction: UIAlertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        return alert
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,13 +45,20 @@ class LoginViewController: UIViewController {
         let param = ["email": self.emailField.text ?? "", "password": self.passwordField.text ?? ""]
         self.indicator.startAnimating()
         Alamofire.request(self.loginURL, method: .post, parameters: param, encoding: URLEncoding.default).responseJSON { [weak self] response in
+            self?.indicator.stopAnimating()
+            guard response.response?.statusCode == 200 else {
+                if let alertViewController = self?.alertViewController {
+                    self?.present(alertViewController, animated: true, completion: nil)
+                }
+                return
+            }
+            
             if let data = response.data {
                 let decoder: JSONDecoder = JSONDecoder()
                 if let user = try? decoder.decode(UserCodable.self, from: data) {
                     User.create(codable: user)
                     let sb = UIStoryboard(name: "Profile", bundle: nil)
                     if let vc = sb.instantiateInitialViewController(){
-                        self?.indicator.stopAnimating()
                         vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                         self?.present(vc, animated: true, completion: nil)
                     }
